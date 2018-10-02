@@ -23,7 +23,6 @@ apt -y autoremove && apt -y remove 'libboost-.*' && apt -y remove 'libboost-.*-d
 cd /tmp &&  wget https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.gz && tar -zxf boost* && cd boost* && ./bootstrap.sh --prefix=/usr/ && ./b2 install -j $(nproc --all)
 
 #Install NSLR-server
-cd /tmp && wget https://github.com/rjhansen/nsrlsvr/tarball/master && tar -zxf master && cd rjhan*
-cmake -DPYTHON_EXECUTABLE=`which python3` . && make && make install
+cd /tmp && wget https://github.com/rjhansen/nsrlsvr/tarball/master && tar -zxf master && cd rjhan* && cmake -DPYTHON_EXECUTABLE=`which python3` . && make && make install
 
 
