@@ -6,7 +6,7 @@ if [ "$EUID" -ne 0 ]
 fi
 
 #Install depos
-sudo apt-get install -y software-properties-common git python3 build-essential python-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev
+sudo apt-get install -y software-properties-common unzip git python3 build-essential python-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev
 
 sudo add-apt-repository -y ppa:jonathonf/gcc-7.1 && apt-get update && apt-get install -y gcc-7 g++-7 
 
@@ -25,4 +25,12 @@ cd /tmp &&  wget https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_6
 #Install NSLR-server
 cd /tmp && wget https://github.com/rjhansen/nsrlsvr/tarball/master && tar -zxf master && cd rjhan* && cmake -DPYTHON_EXECUTABLE=`which python3` . && make && make install
 
+#Grabs NIST NSR
+cd $HOME && wget https://s3.amazonaws.com/rds.nsrl.nist.gov/RDS/current/rds_modernu.zip && unzip rds* && cd rds*
+
+#Loads NIST WL into server database
+nsrlupdate NSRLFile.txt
+
+#Server test
+nsrlsvr --dry-run
 
