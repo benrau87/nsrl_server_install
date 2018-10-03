@@ -6,9 +6,9 @@ if [ "$EUID" -ne 0 ]
 fi
 
 #Install depos
-sudo apt-get install -y software-properties-common unzip git python3 build-essential python-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev
+apt-get install -y software-properties-common unzip git python3 build-essential python-dev autotools-dev libicu-dev libbz2-dev libboost-all-dev
 
-sudo add-apt-repository -y ppa:jonathonf/gcc-7.1 && apt-get update && apt-get install -y gcc-7 g++-7 
+add-apt-repository -y ppa:jonathonf/gcc-7.1 && apt-get update && apt-get install -y gcc-7 g++-7 
 
 
 ##Latest versions as of 20181001
